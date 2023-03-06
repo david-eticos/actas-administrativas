@@ -17,7 +17,7 @@ def ini():
     response = consultar_db_pos01(sql)
     print(response)
 
-    return 'nothing asfter'
+    return 'nothing asfterss'
 
 
 @app.route('/app/ini/login')
