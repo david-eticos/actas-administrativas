@@ -8,7 +8,7 @@ app = Flask(__name__)
 CORS(app)
 
 
-@app.route('/app/ini', methods=['POST'])
+@app.route('/app/ini/', methods=['POST'])
 def ini():
     # users = request.json
     # idUsers = users["id"]
