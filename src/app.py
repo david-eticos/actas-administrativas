@@ -21,7 +21,6 @@ def ini():
 
 @app.route('/app/user', methods=['POST'])
 def user():
-
     users = request.json
     idUsers = users["idusers"]
     response = userPermissions(idUsers)

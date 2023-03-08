@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect,useState } from "react";
 import logo from "../static/img/logoeticos01.png";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,26 +9,32 @@ const API = process.env.REACT_APP_API_DEVELOPER;
 // const API = process.env.REACT_APP_API_PRODUCCION;
 
 export const ActaSumi = () => {
-  const [idusers, setIdUsers] = useState("");
+
+  const [iduserss, setIdUserss] = useState("");
 
   useEffect(() => {
-    const user = Getcookie("IdToken");
-    setIdUsers(user);
-  }, []);
-
-  const cargue = async () => {
-    const res = await fetch(`${API}/app/user`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ idusers }),
-    });
-    try {
-      const data = await res.json();
-      console.log(data);
-    } catch (error) {
-      console.log(error);
+    const idusers = Getcookie("IdToken");
+    setIdUserss(idusers);
+    // declare the data fetching function
+    const fetchData = async () => {
+    
+      const res = await fetch(`${API}/app/user`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ idusers }),
+          });
+          try {
+            const data = await res.json();
+            console.log(data);
+          } catch (error) {
+            console.log(error);
+          }
     }
-  };
+    // call the function
+    fetchData()
+      // make sure to catch any error
+      .catch(console.error);
+    }, []);
 
   return (
     <div className="container-fluid">
@@ -43,7 +49,6 @@ export const ActaSumi = () => {
           </div>
           <div className="col-6 mt-5">
             <h3>
-              {" "}
               <strong>ACTA DE RECEPCION DE MEDICAMENTOS SUMINISTROS</strong>
             </h3>
           </div>
@@ -60,8 +65,7 @@ export const ActaSumi = () => {
         </div>
       </div>
       <div>
-        <h1>{idusers}</h1>
-        <input onChange={cargue()}>names</input>
+        <h1>{iduserss}</h1>
       </div>
     </div>
   );

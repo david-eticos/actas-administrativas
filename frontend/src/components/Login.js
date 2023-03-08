@@ -3,14 +3,21 @@ import logo from "../static/img/logoeticos01.png";
 import swal from "sweetalert";
 import { Setcookie } from "./Setcookie";
 import { Removecookie } from "./Removecookies.js";
+import { Modalmenu } from "./Modals.js";
 
 const API = process.env.REACT_APP_API_DEVELOPER;
-const REACTAPI = process.env.REACT_APP_API;
+// const REACTAPI = process.env.REACT_APP_API;
 // const API = process.env.REACT_APP_API_PRODUCCION;
 
 export const Login = () => {
+
   const [idusers, setIdUsers] = useState("");
   const [password, setPassword] = useState("");
+  const [show, setShow] = useState(false);
+  // uso del evento por props modal
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -28,9 +35,11 @@ export const Login = () => {
       console.log(data.message);
 
       if (data.message === "synced") {
-        window.location.href = `${REACTAPI}/actas/suministro`;
+        // window.location.href = `${REACTAPI}/actas/suministro`;
         Removecookie("IdToken");
         Setcookie("IdToken", JSON.stringify(data.iduser));
+        handleShow();
+  
       } else {
         swal({
           title: "vuelva a intentar!",
@@ -49,7 +58,9 @@ export const Login = () => {
     setPassword("");
   };
 
+
   return (
+    <>
     <div className="container">
       <div className="row p-4 mt-4"></div>
       <div className="row p-4">
@@ -64,8 +75,9 @@ export const Login = () => {
               alt="eticos"
               className="figure-img img-fluid rounded"
             />
+    
             <legend className="px-4 m-4">
-              <b>INGRESAR USUARIO</b>
+              <b>INGRESAR USUARIO </b>
             </legend>
             <div className="form-group px-5">
               <label className="form-label" htmlFor="inputSmall">
@@ -111,7 +123,13 @@ export const Login = () => {
           </form>
         </div>
         <div className="col-4"></div>
+        
       </div>
     </div>
+    
+    <Modalmenu  show={show} handleClose={handleClose}>
+
+    </Modalmenu >
+    </>
   );
 };

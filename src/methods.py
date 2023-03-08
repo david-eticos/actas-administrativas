@@ -41,9 +41,11 @@ def userLogin(idUsers, password):
 
 
 def userPermissions(idUsers):
-
+    print(idUsers)
     sql = open('static/login.sql', 'r', encoding="utf8").read().format(idUsers)
     response = consultar_db_pos01(sql)
+    jsonData = {}
+    print(response)
     try:
         if len(response) > 0:
 
@@ -57,6 +59,7 @@ def userPermissions(idUsers):
                 "message": "synced"
             }
         else:
+            
             jsonData = {
                 "succes": "false",
                 "message": "desynchronise"
@@ -64,5 +67,6 @@ def userPermissions(idUsers):
     except NameError:
 
         print(NameError)
+    # print(jsonData)
 
     return jsonData
