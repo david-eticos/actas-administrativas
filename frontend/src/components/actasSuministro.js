@@ -61,7 +61,7 @@ export const ActaSumi = () => {
       </div>
       <div>
         <h1>{idusers}</h1>
-        <input onChange={cargue()}>name</input>
+        <input onChange={cargue()}>names</input>
       </div>
     </div>
   );

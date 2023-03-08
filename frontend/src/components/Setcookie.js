@@ -8,4 +8,5 @@ export const Setcookie = (cookiename, IdToken) => {
     sameSite: "strict",
     path: `${REACTAPI}`,
   });
+  console.log(cookiename);
 };
