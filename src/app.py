@@ -1,7 +1,7 @@
 from flask import Flask, request
 from flask_cors import CORS
-from dbsql import consultar_db_pos01
 import json
+from methods import *
 
 
 app = Flask(__name__)
@@ -11,19 +11,11 @@ CORS(app)
 def ini():
 
     users = request.json
-    idUsers = users["id"]
-    print(users["id"])
-    # idUsers = '1013590475'
-    sql = f"select nombres,idusuario,des_usuario from usuarios where idusuario='{idUsers}'"
-    response = consultar_db_pos01(sql)
+    idUsers = users["idusers"]
+    password = users["password"]
+    response = userPermissions(idUsers,password)
 
-    item = {
-        "Nombres": response[0][0],
-        "id": response[0][1],
-        "Permiso": response[0][2]
-    }
-
-    return item
+    return response
 
 
 @app.route('/app/actaDispensacion',methods=['POST'])
