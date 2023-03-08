@@ -1,6 +1,3 @@
-import React from 'react';
+import React from "react";
 
-export const actaSatel = () => (
-    
-    <h1>Actas Satelite</h1>
-)
+export const ActaSatel = () => <h1>Actas Satelite</h1>;
