@@ -1,6 +1,5 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-// import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Login } from "./components/Login";
 import { ActaSumi } from "./components/ActasSuministro";
 import { ActaSatel } from "./components/ActasSatelites";
