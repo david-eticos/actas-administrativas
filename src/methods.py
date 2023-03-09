@@ -19,6 +19,9 @@ def userLogin(idUsers, password):
                     "modality": response[0][3],
                     "battalion": response[0][4],
                     "token": response[0][5],
+                    "esm": response[0][6],
+                    "group": response[0][7],
+                    "user": response[0][8],
                     "message": "synced"
                 }
             else:
@@ -59,7 +62,7 @@ def userPermissions(idUsers):
                 "message": "synced"
             }
         else:
-            
+
             jsonData = {
                 "succes": "false",
                 "message": "desynchronise"
