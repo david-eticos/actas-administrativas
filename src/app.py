@@ -32,9 +32,17 @@ def dispensacion():
     None
 
 
-@app.route('/app/actaSuministro')
+@app.route('/app/actaSuministro', methods=['POST'])
 def suministro():
-    None
+
+    data = request.json
+   
+    esm = data["state"].split(" ")[0]
+    factura = data["fact"].split(" ")[1]
+    num = data["num"].replace(".","").replace("-","")
+    response = validaactasumi(esm,factura,num)
+
+    return {"envio": "datos"}
 
 
 @app.route('/app/actaSatelite')

@@ -60,7 +60,7 @@ export const Login = () => {
       console.log(error);
     }
 
-    // setIdUsers("");
+    setIdUsers("");
     setPassword("");
     // setBatallon("");
     // setModality("");
